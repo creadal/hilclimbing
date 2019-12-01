@@ -58,6 +58,9 @@ def find_optimal_direction(var, coefs, signs, objective, problem):
             var2 = var[:]
             var2[i] += s
 
+            if not check_constraints(var, coefs, signs):
+                continue
+
             if problem == MAXIMUM:
                 if calc_diff(var, var2, objective) > mx:
                     mx = calc_diff(var, var2, objective)
